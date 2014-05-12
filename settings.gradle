@@ -1,0 +1,3 @@
+include ':faucet-plugin'
+include ':faucet-runtime'
+include ':faucet-example'

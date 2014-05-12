@@ -1,0 +1,43 @@
+allprojects {
+    buildscript {
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
+    }
+
+    dependencies {
+        repositories {
+            mavenCentral()
+        }
+    }
+
+    group = GROUP
+    version = VERSION_NAME
+
+    apply plugin: 'maven'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+
+task cleanExample(type: Exec) {
+    executable = 'gradle'
+    workingDir = project.file('faucet-example')
+    args = ['clean']
+}
+
+task assembleExample(type: Exec) {
+    executable = 'gradle'
+    workingDir = project.file('faucet-example')
+    args = ['assemble']
+}
+
+task installExample(type: Exec) {
+    executable = 'gradle'
+    workingDir = project.file('faucet-example')
+    args = ['installDebug']
+}
+
+

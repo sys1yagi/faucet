@@ -1,0 +1,49 @@
+buildscript {
+    dependencies {
+        repositories {
+            mavenCentral()
+            // NOTE: This is only needed when developing the plugin!
+            mavenLocal()
+
+        }
+
+        classpath 'com.android.tools.build:gradle:0.10.+'
+        classpath 'com.sys1yagi:faucet-plugin:0.0.1'
+
+    }
+}
+
+dependencies {
+    repositories {
+        mavenCentral()
+
+        // NOTE: This is only needed when developing the plugin!
+        mavenLocal()
+    }
+}
+
+apply plugin: 'android'
+apply plugin: 'faucet'
+
+dependencies {
+//    compile 'com.sys1yagi:leak-checker:0.0.1'
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.0.3'
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 18
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        dev {
+            packageNameSuffix '.dev'
+        }
+    }
+}
