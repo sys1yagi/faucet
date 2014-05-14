@@ -2,9 +2,8 @@ buildscript {
     dependencies {
         repositories {
             mavenCentral()
-            // NOTE: This is only needed when developing the plugin!
-            mavenLocal()
-
+            maven { url 'https://raw.githubusercontent.com/sys1yagi/faucet/master/repo-plugin' }
+            maven { url 'https://raw.githubusercontent.com/sys1yagi/faucet/master/repo-runtime' }
         }
 
         classpath 'com.android.tools.build:gradle:0.10.+'
@@ -16,9 +15,8 @@ buildscript {
 dependencies {
     repositories {
         mavenCentral()
-
-        // NOTE: This is only needed when developing the plugin!
-        mavenLocal()
+        maven { url 'https://raw.githubusercontent.com/sys1yagi/faucet/master/repo-plugin' }
+        maven { url 'https://raw.githubusercontent.com/sys1yagi/faucet/master/repo-runtime' }
     }
 }
 
@@ -26,7 +24,7 @@ apply plugin: 'android'
 apply plugin: 'faucet'
 
 dependencies {
-//    compile 'com.sys1yagi:leak-checker:0.0.1'
+
 }
 
 android {
