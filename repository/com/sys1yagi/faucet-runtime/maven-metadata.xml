@@ -2,11 +2,11 @@
 <metadata>
   <groupId>com.sys1yagi</groupId>
   <artifactId>faucet-runtime</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.1-SNAPSHOT</version>
   <versioning>
     <versions>
-      <version>0.0.1</version>
+      <version>0.0.1-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20140514082010</lastUpdated>
+    <lastUpdated>20140514090101</lastUpdated>
   </versioning>
 </metadata>

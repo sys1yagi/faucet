@@ -32,10 +32,12 @@ public class Faucet {
         Log.d("Faucet", "target=" + joinPoint.getTarget());
         if (args != null) {
             for (Object arg : args) {
-                if (!(arg instanceof String)) {
-                    LeakChecker.addLeakChecker(arg);
-                } else {
-                    Log.d("Faucet", "ignore check:" + arg);
+                if (arg != null) {
+                    if (!arg.getClass().isPrimitive()) {
+                        LeakChecker.addLeakChecker(arg);
+                    } else {
+                        Log.d("Faucet", "ignore check:" + arg);
+                    }
                 }
             }
         }
