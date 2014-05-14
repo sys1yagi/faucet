@@ -24,6 +24,7 @@ public class FaucetActivity extends Activity {
         user = new User();
         user.setId(10);
         user.setName("Tom");
+        user.setName(null);
     }
 
     @Override

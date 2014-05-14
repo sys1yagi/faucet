@@ -32,7 +32,7 @@ class FaucetPlugin implements Plugin<Project> {
         }
 
         project.dependencies {
-            debugCompile 'com.sys1yagi:faucet-runtime:0.0.1'
+            debugCompile 'com.sys1yagi:faucet-runtime:0.0.1-SNAPSHOT'
             // TODO this should come transitively
             debugCompile 'org.aspectj:aspectjrt:1.7.4'
             debugCompile 'com.sys1yagi:leak-checker:0.0.1'

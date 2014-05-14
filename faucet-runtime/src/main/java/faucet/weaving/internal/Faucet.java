@@ -28,20 +28,25 @@ public class Faucet {
 
         Object[] args = joinPoint.getArgs();
 
-        Log.d("Faucet", "-----------------------------");
-        Log.d("Faucet", "target=" + joinPoint.getTarget());
+        //Log.d("Faucet", "target=" + joinPoint.getTarget());
         if (args != null) {
             for (Object arg : args) {
                 if (arg != null) {
-                    if (!arg.getClass().isPrimitive()) {
-                        LeakChecker.addLeakChecker(arg);
-                    } else {
+                    if ((arg instanceof String)
+                            || (arg instanceof Integer)
+                            || (arg instanceof Boolean)
+                            || (arg instanceof Byte)
+                            || (arg instanceof Character)
+                            || (arg instanceof Long)
+                            || (arg instanceof Double)
+                            || (arg instanceof Short)) {
                         Log.d("Faucet", "ignore check:" + arg);
+                    } else {
+                        LeakChecker.addLeakChecker(arg);
                     }
                 }
             }
         }
-        Log.d("Faucet", "-----------------------------");
 
         return result;
     }

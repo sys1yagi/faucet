@@ -2,7 +2,7 @@ buildscript {
     dependencies {
         repositories {
             mavenCentral()
-            maven { url 'https://raw.githubusercontent.com/sys1yagi/faucet/master/repository' }
+            mavenLocal()
         }
 
         classpath 'com.android.tools.build:gradle:0.10.+'
@@ -14,7 +14,7 @@ buildscript {
 dependencies {
     repositories {
         mavenCentral()
-        maven { url 'https://raw.githubusercontent.com/sys1yagi/faucet/master/repository' }
+        mavenLocal()
     }
 }
 
