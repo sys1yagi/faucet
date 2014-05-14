@@ -87,9 +87,7 @@ task install(type: Exec, dependsOn: assemble) {
     ]
 }
 
-//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
-
-def deployTo = new File(rootDir, "repository")
+def deployTo = new File(rootDir, "repo-runtime")
 
 uploadArchives {
     repositories {
@@ -101,3 +99,4 @@ uploadArchives {
         }
     }
 }
+
