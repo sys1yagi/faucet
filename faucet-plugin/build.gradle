@@ -17,7 +17,7 @@ dependencies {
     compile 'org.aspectj:aspectjrt:1.7.4'
 }
 
-def deployTo = new File(rootDir, "repo-plugin")
+def deployTo = new File(rootDir, "repository")
 
 uploadArchives {
     repositories {

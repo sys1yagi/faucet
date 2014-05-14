@@ -87,7 +87,7 @@ task install(type: Exec, dependsOn: assemble) {
     ]
 }
 
-def deployTo = new File(rootDir, "repo-runtime")
+def deployTo = new File(rootDir, "repository")
 
 uploadArchives {
     repositories {
