@@ -1,7 +1,7 @@
 package com.example.faucet;
 
 import com.example.faucet.models.User;
-import com.example.faucet.tasks.LeakTask;
+import com.example.faucet.tasks.EmptyTask;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +25,7 @@ public class DetailActivity extends ActionBarActivity {
 
     private User user;
 
-    private LeakTask leakTask;
+    private static EmptyTask emptyTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,8 @@ public class DetailActivity extends ActionBarActivity {
         setContentView(R.layout.activity_detail);
         user = getIntent().getParcelableExtra(ARGS_USER);
 
-        leakTask = new LeakTask(this);
-        leakTask.execute();
+        emptyTask = new EmptyTask(this);
+        emptyTask.execute();
 
     }
 

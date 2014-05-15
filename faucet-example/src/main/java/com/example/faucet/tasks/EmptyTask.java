@@ -3,11 +3,11 @@ package com.example.faucet.tasks;
 import android.content.Context;
 import android.os.AsyncTask;
 
-public class LeakTask extends AsyncTask<Void, Void, Void> {
+public class EmptyTask extends AsyncTask<Void, Void, Void> {
 
     Context context;
 
-    public LeakTask(Context context) {
+    public EmptyTask(Context context) {
         this.context = context;
     }
 
