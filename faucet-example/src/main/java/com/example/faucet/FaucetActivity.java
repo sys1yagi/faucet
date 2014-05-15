@@ -8,12 +8,16 @@ import android.os.Bundle;
 
 public class FaucetActivity extends Activity {
 
-    //String is not tracked.
+    //Primitive types is not tracked.
     private String ignoredValue;
 
+    private float aFloat;
+
+    //tracking!
     private Context checkedValue;
 
     private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,7 @@ public class FaucetActivity extends Activity {
         user.setId(10);
         user.setName("Tom");
         user.setName(null);
+        aFloat = 4.3f;
     }
 
     @Override

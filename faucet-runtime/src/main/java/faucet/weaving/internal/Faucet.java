@@ -39,7 +39,9 @@ public class Faucet {
                             || (arg instanceof Character)
                             || (arg instanceof Long)
                             || (arg instanceof Double)
-                            || (arg instanceof Short)) {
+                            || (arg instanceof Short)
+                            || (arg instanceof Float)
+                            ) {
                         Log.d("Faucet", "ignore check:" + arg);
                     } else {
                         LeakChecker.addLeakChecker(arg);
