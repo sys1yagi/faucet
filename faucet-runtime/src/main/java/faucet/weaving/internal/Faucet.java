@@ -63,14 +63,24 @@ public class Faucet {
                 continue;
             }
 
-            Class clazz = target.getClass();
-            Field field = clazz.getDeclaredField(joinPoint.getSignature().getName());
-            if (field != null) {
-                if (Modifier.isStatic(field.getModifiers())) {
-                    Log.d("Faucet",
-                            "ignore static=" + arg.getClass().getName() + " toString=" + args);
-                    continue;
+            try {
+                Class clazz = target.getClass();
+                Field field = clazz.getDeclaredField(joinPoint.getSignature().getName());
+                if (field != null) {
+                    if (Modifier.isStatic(field.getModifiers())) {
+                        Log.d("Faucet",
+                                "ignore static=" + arg.getClass().getName() + " toString=" + args);
+                        continue;
+                    }
                 }
+            } catch (NoSuchFieldException e) {
+                //ok.
+                Log.d("Faucet",
+                        "no such field=" + target.getClass().getDeclaredField(
+                                joinPoint.getSignature().getName()
+                                        + " target=" + target.getClass().getName()
+                        )
+                );
             }
             LeakChecker.addLeakChecker(arg);
         }

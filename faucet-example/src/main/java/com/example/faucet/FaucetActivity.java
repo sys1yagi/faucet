@@ -1,6 +1,6 @@
 package com.example.faucet;
 
-import com.example.faucet.model.User;
+import com.example.faucet.models.User;
 
 import android.app.Activity;
 import android.content.Context;

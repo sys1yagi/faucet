@@ -1,14 +1,13 @@
 package com.example.faucet;
 
-import com.example.faucet.model.User;
+import com.example.faucet.models.User;
+import com.example.faucet.tasks.LeakTask;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -26,15 +25,22 @@ public class DetailActivity extends ActionBarActivity {
 
     private User user;
 
+    private LeakTask leakTask;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         user = getIntent().getParcelableExtra(ARGS_USER);
+
+        leakTask = new LeakTask(this);
+        leakTask.execute();
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
+
 }

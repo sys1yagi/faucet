@@ -1,4 +1,4 @@
-package com.example.faucet.model;
+package com.example.faucet.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
