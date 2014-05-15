@@ -4,9 +4,11 @@ import com.example.faucet.model.User;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-public class FaucetActivity extends Activity {
+public class FaucetActivity extends Activity implements View.OnClickListener {
 
     //Primitive types is not tracked.
     private String ignoredValue;
@@ -17,7 +19,6 @@ public class FaucetActivity extends Activity {
     private Context checkedValue;
 
     private User user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,20 @@ public class FaucetActivity extends Activity {
         user.setName("Tom");
         user.setName(null);
         aFloat = 4.3f;
+        findViewById(R.id.boot_button).setOnClickListener(this);
+    }
+
+    private void showDetailActivity(User user) {
+        Intent intent = DetailActivity.createIntent(this, user);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.boot_button:
+                showDetailActivity(user);
+        }
     }
 
     @Override

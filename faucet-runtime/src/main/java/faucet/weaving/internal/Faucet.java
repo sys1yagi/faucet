@@ -9,6 +9,9 @@ import org.aspectj.lang.annotation.Pointcut;
 
 import android.util.Log;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 
 @Aspect
 public class Faucet {
@@ -28,28 +31,49 @@ public class Faucet {
 
         Object[] args = joinPoint.getArgs();
 
-        //Log.d("Faucet", "target=" + joinPoint.getTarget());
-        if (args != null) {
-            for (Object arg : args) {
-                if (arg != null) {
-                    if ((arg instanceof String)
-                            || (arg instanceof Integer)
-                            || (arg instanceof Boolean)
-                            || (arg instanceof Byte)
-                            || (arg instanceof Character)
-                            || (arg instanceof Long)
-                            || (arg instanceof Double)
-                            || (arg instanceof Short)
-                            || (arg instanceof Float)
-                            ) {
-                        Log.d("Faucet", "ignore check:" + arg);
-                    } else {
-                        LeakChecker.addLeakChecker(arg);
-                    }
+        Object target = joinPoint.getTarget();
+
+        if (args == null) {
+            return result;
+        }
+        for (Object arg : args) {
+            if (arg == null) {
+                continue;
+            }
+
+            //primitive type
+            if ((arg instanceof String)
+                    || (arg instanceof Integer)
+                    || (arg instanceof Boolean)
+                    || (arg instanceof Byte)
+                    || (arg instanceof Character)
+                    || (arg instanceof Long)
+                    || (arg instanceof Double)
+                    || (arg instanceof Short)
+                    || (arg instanceof Float)
+                    ) {
+                Log.d("Faucet", "ignore type=" + arg.getClass().getName() + " toString=" + args);
+                continue;
+            }
+
+            //static field
+            if (target == null) {
+                Log.d("Faucet",
+                        "target is null=" + arg.getClass().getName() + " toString=" + args);
+                continue;
+            }
+
+            Class clazz = target.getClass();
+            Field field = clazz.getDeclaredField(joinPoint.getSignature().getName());
+            if (field != null) {
+                if (Modifier.isStatic(field.getModifiers())) {
+                    Log.d("Faucet",
+                            "ignore static=" + arg.getClass().getName() + " toString=" + args);
+                    continue;
                 }
             }
+            LeakChecker.addLeakChecker(arg);
         }
-
         return result;
     }
 
