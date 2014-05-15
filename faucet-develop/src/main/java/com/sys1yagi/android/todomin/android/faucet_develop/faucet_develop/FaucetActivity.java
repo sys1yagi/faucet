@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class FaucetActivity extends ActionBarActivity {
+public class FaucetActivity extends BaseFaucetActivity {
 
     //Primitive types is not tracked.
     private String ignoredValue;

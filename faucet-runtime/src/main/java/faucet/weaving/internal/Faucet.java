@@ -76,10 +76,8 @@ public class Faucet {
             } catch (NoSuchFieldException e) {
                 //ok.
                 Log.d("Faucet",
-                        "no such field=" + target.getClass().getDeclaredField(
-                                joinPoint.getSignature().getName()
-                                        + " target=" + target.getClass().getName()
-                        )
+                        "no such field=" + joinPoint.getSignature().getName()
+                                + " target=" + target.getClass().getName()
                 );
             }
             LeakChecker.addLeakChecker(arg);
